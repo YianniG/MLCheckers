@@ -16,3 +16,4 @@ print("move piece 0,1 to 1,2")
 board.move_piece((0,1), (1,2))
 
 print(board)
+print(p1.get_pieces())
