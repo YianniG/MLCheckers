@@ -25,23 +25,30 @@ class Board(object):
 
         self.board[e_loc[0]][e_loc[1]] = self.board[s_loc[0]][s_loc[1]]
         self.board[s_loc[0]][s_loc[1]] = None
+        self.board[e_loc[0]][e_loc[1]].move(e_loc)
 
 
-    def add_piece(self, piece, loc):
+    def add_piece(self, piece):
         """
         piece: piece to add
-        loc:   (x, y) location to add piece to
         """
+        loc = piece.get_loc()  # (x, y) location to add piece to
         if self.board[loc[0]][loc[1]] is not None:
             raise PieceError("Can't add piece at location " + str(loc) + " location occupied")
         self.board[loc[0]][loc[1]] = piece
+
+    def contains_piece(self, loc):
+        return self.board[loc[0]][loc[1]] is not None
 
 
     def __str__(self):
         output = "\n"
         for y in range(0, self.height):
             for x in range(0, self.width):
-                output += str(self.board[x][y]) + "\t"
+                if self.contains_piece((x,y)):
+                    output += str(self.board[x][y].get_player()) + "\t"
+                else:
+                    output += '\t'
             output += "\n"
         return output
 

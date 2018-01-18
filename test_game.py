@@ -1,7 +1,8 @@
 
 from board_maker import *
-from board import *
-from player import *
+from board       import *
+from player      import *
+from utils       import *
 
 board = Board(10, 10)
 p1 = Player('1')
@@ -16,4 +17,6 @@ print("move piece 0,1 to 1,2")
 board.move_piece((0,1), (1,2))
 
 print(board)
-print(p1.get_pieces())
+
+print_pieces(p1.get_pieces())
+print_pieces(p2.get_pieces())
