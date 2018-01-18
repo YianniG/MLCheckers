@@ -1,6 +1,6 @@
 
 from board_maker import *
-from checkers import *
+from board import *
 from player import *
 
 board = Board(10, 10)
